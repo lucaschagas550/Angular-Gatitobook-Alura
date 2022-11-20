@@ -2,13 +2,14 @@
   Login
 </h4>
 
-<form class="form mt-4">
+<!--Ao confirmar chama o metodo login-->
+<form class="form mt-4" (ngSubmit)="login()">
   <div class="form-group">
-    <input class="form-control" placeholder="Nome do usuario"/>
+    <input class="form-control" placeholder="Nome do usuario" [(ngModel)]="usuario" name="usuario"/>
   </div>
 
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Senha"/>
+    <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha" name="senha"/>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block">
