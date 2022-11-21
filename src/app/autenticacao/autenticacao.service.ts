@@ -7,11 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AutenticacaoService {
 
+  autenticacaoUrl = 'http://localhost:3000/usuarios';
+  // 'http://localhost:3000/user/login'
   constructor(private httpClient: HttpClient) { }
 
   autentica(usuario: string, senha: string) : Observable<any>{
-    return this.httpClient.post('http://localhost:3000/user/login',{
-      userName: usuario,
+    return this.httpClient.post(this.autenticacaoUrl,{
+      username: usuario,
       password: senha
     })
   }
