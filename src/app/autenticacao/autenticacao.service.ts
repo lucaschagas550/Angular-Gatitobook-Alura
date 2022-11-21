@@ -12,9 +12,10 @@ export class AutenticacaoService {
   constructor(private httpClient: HttpClient) { }
 
   autentica(usuario: string, senha: string) : Observable<any>{
-    return this.httpClient.post(this.autenticacaoUrl,{
-      username: usuario,
-      password: senha
-    })
+    // return this.httpClient.post(this.autenticacaoUrl,{
+    //   username: usuario,
+    //   password: senha
+    // })
+    return this.httpClient.get(this.autenticacaoUrl + `?username=${usuario}&senha=${senha}`)
   }
 }
