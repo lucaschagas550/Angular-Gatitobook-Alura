@@ -5,11 +5,14 @@
 <!--Ao confirmar chama o metodo login-->
 <form class="form mt-4" (ngSubmit)="login()">
   <div class="form-group">
-    <input class="form-control" placeholder="Nome do usuario" [(ngModel)]="usuario" name="usuario"/>
+    <input class="form-control" placeholder="Nome do usuario" [(ngModel)]="usuario" name="usuario" #campoUsuario="ngModel" required/>
+    <app-mensagem *ngIf="campoUsuario.invalid" mensagem="Usuario obrigatorio"></app-mensagem>
   </div>
 
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha" name="senha"/>
+    <!--# eh uma variavel de referencia-->
+    <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha" name="senha" #campoSenha="ngModel" required/>
+    <app-mensagem *ngIf="campoSenha.invalid" mensagem="Senha obrigatoria"></app-mensagem>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block">
