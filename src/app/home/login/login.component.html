@@ -3,19 +3,20 @@
 </h4>
 
 <!--Ao confirmar chama o metodo login-->
-<form class="form mt-4" (ngSubmit)="login()">
+<form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
   <div class="form-group">
     <input class="form-control" placeholder="Nome do usuario" [(ngModel)]="usuario" name="usuario" #campoUsuario="ngModel" required/>
-    <app-mensagem *ngIf="campoUsuario.invalid" mensagem="Usuario obrigatorio"></app-mensagem>
+    <app-mensagem *ngIf="campoUsuario.invalid && campoUsuario.touched" mensagem="Usuario obrigatorio"></app-mensagem>
   </div>
 
   <div class="form-group">
     <!--# eh uma variavel de referencia-->
     <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="senha" name="senha" #campoSenha="ngModel" required/>
-    <app-mensagem *ngIf="campoSenha.invalid" mensagem="Senha obrigatoria"></app-mensagem>
+    <app-mensagem *ngIf='campoSenha.invalid && campoSenha.touched' mensagem="Senha obrigatoria"></app-mensagem>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block">
+  <!--Se formulario estiver invalido o botao fica desabilitado, [disable] se chama uma expressao-->
+  <button type="submit" class="btn btn-primary btn-block" [disabled]='loginForm.invalid'>
     Login
   </button>
 </form>
