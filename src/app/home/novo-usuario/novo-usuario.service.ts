@@ -6,11 +6,16 @@ import { NovoUsuario } from './novo-usuario';
   providedIn: 'root'
 })
 export class NovoUsuarioService {
-  cadastrarUsuarioUrl = 'http://localhost:3000/usuarios';
+  cadastrarUsuarioUrlAPI = 'http://localhost:3000/usuarios';
 
   constructor(private http: HttpClient) { }
 
   cadastraNovoUsuario(novoUsuario: NovoUsuario){
-    return this.http.post(this.cadastrarUsuarioUrl, novoUsuario)
+    return this.http.post(this.cadastrarUsuarioUrlAPI, novoUsuario)
   };
+
+  verificarUsuarioExistente(nomeUsuario: string){
+    console.log(`${this.cadastrarUsuarioUrlAPI}?userName=${nomeUsuario}`);
+    return this.http.get(`${this.cadastrarUsuarioUrlAPI}?username=${nomeUsuario}`)
+  }
 }
