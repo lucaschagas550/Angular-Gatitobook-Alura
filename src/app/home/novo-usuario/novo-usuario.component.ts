@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NovoUsuario } from './novo-usuario';
 import { minusculoValidator } from './minusculo.validor';
+import { usuarioSenhaIguaisValidator } from './usuario-senha-iguais-validator';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -30,10 +31,14 @@ export class NovoUsuarioComponent implements OnInit {
         [this.usuarioExisteService.usuarioJaExiste()]
       ],
       password: [''],
-    })
+    },
+      {
+        validators: [usuarioSenhaIguaisValidator],
+      }
+    );
   }
 
-  cadastrar(){
+  cadastrar() {
     const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
     console.log("teste");
     console.log(novoUsuario);
