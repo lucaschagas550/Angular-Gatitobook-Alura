@@ -16,19 +16,19 @@ export class AutenticacaoService {
     private usuarioService: UsuarioService) { }
 
   autentica(usuario: string, senha: string): Observable<any> { //Observable<HttResponse<any>> //Para obter o conteudo todo do response{
-    return this.httpClient.post(this.autenticacaoUrl, {
-      username: usuario,
-      password: senha
-    },
-      {
-        observe: 'response'
-      }
-    ).pipe(
-      tap((response) => {
-        const authToken = response.headers.get('x-acess-token') ?? '';
-        this.usuarioService.salvaToken(authToken);
-      })
-    );
+    // return this.httpClient.post(this.autenticacaoUrl, {
+    //   username: usuario,
+    //   password: senha
+    // },
+    //   {
+    //     observe: 'response'
+    //   }
+    // ).pipe(
+    //   tap((response) => {
+    //     const authToken = response.headers.get('x-acess-token') ?? '';
+    //     this.usuarioService.salvaToken(authToken);
+    //   })
+    // );
 
     var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.tokenJWT);
 
